@@ -2,6 +2,8 @@ package rc.unesp.br.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Class for the panel that will hold all the action buttons.
@@ -10,7 +12,7 @@ import java.awt.*;
  * @author Bruno Vedovetto @bleandro
  */
 public class ButtonPanel extends JPanel {
-    private JButton callTrucoButton;
+    private CallTrucoButton callTrucoButton;
     private JButton foldButton;
     private Color backgroundColor = new Color(32, 120, 85);
 
@@ -36,7 +38,7 @@ public class ButtonPanel extends JPanel {
      * Create the call truco button
      */
     private void createCallTrucoButton() {
-        this.callTrucoButton = new JButton("Truco");
+        this.callTrucoButton = new CallTrucoButton();
         this.setCallTrucoButtonOpts();
     }
 
@@ -59,6 +61,6 @@ public class ButtonPanel extends JPanel {
      * Set the call truco button layout options
      */
     private void setCallTrucoButtonOpts() {
-        // TODO
+
     }
 }
