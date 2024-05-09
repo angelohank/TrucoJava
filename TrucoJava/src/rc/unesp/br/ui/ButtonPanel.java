@@ -39,7 +39,6 @@ public class ButtonPanel extends JPanel {
      */
     private void createCallTrucoButton() {
         this.callTrucoButton = new CallTrucoButton();
-        this.setCallTrucoButtonOpts();
     }
 
     /**
@@ -57,10 +56,5 @@ public class ButtonPanel extends JPanel {
         // TODO
     }
 
-    /**
-     * Set the call truco button layout options
-     */
-    private void setCallTrucoButtonOpts() {
-
-    }
+    public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
 }

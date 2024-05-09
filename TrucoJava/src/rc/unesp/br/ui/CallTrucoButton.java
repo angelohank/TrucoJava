@@ -8,7 +8,9 @@ public class CallTrucoButton extends JButton {
 
     private boolean pressed = false;
 
-    public void setPressed( boolean pressed ) { this.pressed = pressed; }
+    public void setPressed( boolean pressed ) {
+        this.pressed = pressed;
+    }
     public boolean isPressed() { return this.pressed; }
     CallTrucoButton() {
         this.setText("Truco");
