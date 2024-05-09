@@ -72,13 +72,12 @@ public class GameController {
 
     private void initGameLoop() {
         Player pointWinner = null;
-        System.out.println("init game loop - setando como false");
-
 
         while (!this.isEnded()) {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
             turnedCard = this.deck.drawRandomCard();
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setPressed(false);
+            this.view.gamePanel.scorePanel.setRoundValue(1);
 
             this.view.setTurnedCardOnMiddlePanel(turnedCard);
             this.view.setLastChosenCardOnMiddlePanel(Card.getFacedDownCard());
@@ -99,7 +98,6 @@ public class GameController {
             // TODO: check this
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
-
 
             // Instantiate a new point
             Point point = new Point(this.players);

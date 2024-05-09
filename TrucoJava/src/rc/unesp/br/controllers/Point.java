@@ -49,6 +49,16 @@ public class Point {
                    pass the players as they come. Also, we just do this reordering if the round
                    is not the first one.
                  */
+
+                boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed();
+                System.out.println(jogoTrucado);
+
+                if ( jogoTrucado ) {
+                    System.out.println("definindo valor do ponto como 3");
+                    this.view.gamePanel.scorePanel.setRoundValue(3);
+                    this.setPointValue( PointValue.THREE );
+                }
+
                 if (it.nextIndex() != 0) {
                     int previousIndex = it.previousIndex();
                     previousRound = this.rounds.get(previousIndex);
