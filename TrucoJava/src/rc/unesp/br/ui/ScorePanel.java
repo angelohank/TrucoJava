@@ -14,6 +14,8 @@ public class ScorePanel extends JPanel {
     private JLabel player2GameScore = new JLabel();
     private JLabel player1RoundScore = new JLabel();
     private JLabel player2RoundScore = new JLabel();
+
+    private JLabel roundValue = new JLabel();
     private Color backgroundColor = new Color(255, 255, 255);
 
     /**
@@ -41,6 +43,9 @@ public class ScorePanel extends JPanel {
         this.player2RoundScore.setText("Player 2 ==> " + score);
     }
 
+
+    public void setRoundValue( int value ) { this.roundValue.setText("Round value ==>" + value); }
+
     private void setLabelsOptions() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = 0;
@@ -62,6 +67,9 @@ public class ScorePanel extends JPanel {
 
         constraints.gridy = 5;
         this.add(this.player2RoundScore, constraints);
+
+        constraints.gridy = 6;
+        this.add( new JLabel("Round value ==> 1" ), constraints);
     }
 
     /**
