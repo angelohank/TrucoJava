@@ -51,10 +51,7 @@ public class Point {
                  */
 
                 boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed();
-                System.out.println(jogoTrucado);
-
                 if ( jogoTrucado ) {
-                    System.out.println("definindo valor do ponto como 3");
                     this.view.gamePanel.scorePanel.setRoundValue(3);
                     this.setPointValue( PointValue.THREE );
                 }
