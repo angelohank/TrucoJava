@@ -10,7 +10,7 @@ import java.awt.*;
  * @author Bruno Vedovetto @bleandro
  */
 public class ButtonPanel extends JPanel {
-    private JButton callTruco;
+    private JButton callTrucoButton;
     private JButton foldButton;
     private Color backgroundColor = new Color(32, 120, 85);
 
@@ -22,6 +22,9 @@ public class ButtonPanel extends JPanel {
         this.setInitialOpts();
         this.createCallTrucoButton();
         this.createFoldButton();
+
+        this.add( this.callTrucoButton );
+        this.add( this.foldButton );
     }
 
     private void setInitialOpts() {
@@ -33,7 +36,7 @@ public class ButtonPanel extends JPanel {
      * Create the call truco button
      */
     private void createCallTrucoButton() {
-        this.callTruco = new JButton("Truco");
+        this.callTrucoButton = new JButton("Truco");
         this.setCallTrucoButtonOpts();
     }
 
