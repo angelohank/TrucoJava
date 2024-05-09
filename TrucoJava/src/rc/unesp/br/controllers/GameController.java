@@ -5,6 +5,7 @@ import rc.unesp.br.DAO.IGameWinnerRepository;
 import rc.unesp.br.beans.*;
 import rc.unesp.br.ui.MainView;
 
+import java.nio.channels.Pipe;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,20 +100,9 @@ public class GameController {
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
 
-            // Instantiate a new point
-            Point point = new Point(this.players);
-            point.setView(this.view);
-            point.initPoint(this.players);
+            Point currentPoint =  startNewPoint( this.players, this.view );
+            checkEndedGame( pointWinner, currentPoint );
 
-            // Check if the game has ended
-            pointWinner = point.getWinner();
-            if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
-                this.setWinner(pointWinner);
-                this.setEnded(true);
-            } else {
-                this.deck.resetDeck();
-                this.resetPlayersRoundScore();
-            }
         }
 
         IGameWinnerRepository iGameWinnerRepository = new GameWinnerRepository();
@@ -167,4 +157,24 @@ public class GameController {
     public boolean isEnded() {
         return this.ended;
     }
+
+    public Point startNewPoint( List<Player> player, MainView view ){
+        Point point = new Point( players );
+        point.setView( view );
+        point.initPoint( players );
+
+        return point;
+    };
+    public void checkEndedGame( Player pointWinner, Point currentPoint ) {
+        pointWinner = currentPoint.getWinner();
+
+        if( pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE ) {
+            this.setWinner( pointWinner );
+            this.setEnded( true );
+        } else {
+            this.deck.resetDeck();
+            this.resetPlayersRoundScore();
+        }
+    };
+
 }

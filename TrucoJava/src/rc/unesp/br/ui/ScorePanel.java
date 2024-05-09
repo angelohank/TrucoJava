@@ -1,5 +1,7 @@
 package rc.unesp.br.ui;
 
+import rc.unesp.br.beans.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -41,6 +43,14 @@ public class ScorePanel extends JPanel {
 
     public void setPlayer2RoundScore(int score) {
         this.player2RoundScore.setText("Player 2 ==> " + score);
+    }
+
+    public void setWinnerScore( Player winner ) {
+        if (winner.getName().equals("player1")) {
+            setPlayer1GameScore(winner.getGameScore());
+        } else {
+            setPlayer2GameScore(winner.getGameScore());
+        }
     }
 
 

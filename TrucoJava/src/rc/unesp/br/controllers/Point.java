@@ -102,11 +102,7 @@ public class Point {
     public void endPoint(Player winner){
         winner.increaseGameScore(this.pointValue.getValue());
 
-        if (winner.getName().equals("player1")) {
-            this.view.gamePanel.scorePanel.setPlayer1GameScore(winner.getGameScore());
-        } else {
-            this.view.gamePanel.scorePanel.setPlayer2GameScore(winner.getGameScore());
-        }
+        updateGameScore( winner );
 
         this.setWinner(winner);
         this.setEnded(true);
@@ -232,5 +228,9 @@ public class Point {
      */
     public void setPointValue(PointValue _value) {
         this.pointValue = _value;
+    }
+
+    public void updateGameScore( Player winner ) {
+        this.view.gamePanel.scorePanel.setWinnerScore( winner );
     }
 }
