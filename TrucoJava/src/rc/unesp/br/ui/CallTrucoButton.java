@@ -19,6 +19,7 @@ public class CallTrucoButton extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setPressed(true);
+                setEnabled(false);
             }
         });
     }

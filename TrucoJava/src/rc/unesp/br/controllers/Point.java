@@ -39,6 +39,7 @@ public class Point {
 
         while (!this.isEnded()) {
             Round previousRound = null;
+            this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
             ListIterator<Round> it = this.rounds.listIterator();
 
             // TODO: add logic to treat tie cases and others
@@ -100,10 +101,7 @@ public class Point {
      * @param winner {Player}
      */
     public void endPoint(Player winner){
-        winner.increaseGameScore(this.pointValue.getValue());
-
         updateGameScore( winner );
-
         this.setWinner(winner);
         this.setEnded(true);
     }
@@ -231,6 +229,7 @@ public class Point {
     }
 
     public void updateGameScore( Player winner ) {
+        winner.increaseGameScore(this.pointValue.getValue());
         this.view.gamePanel.scorePanel.setWinnerScore( winner );
     }
 }
