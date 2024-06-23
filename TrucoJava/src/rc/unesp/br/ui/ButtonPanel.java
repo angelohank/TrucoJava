@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class ButtonPanel extends JPanel {
     private CallTrucoButton callTrucoButton;
+    private CallTruco9Button callTruco9Button;
     private JButton foldButton;
     private Color backgroundColor = new Color(32, 120, 85);
 
@@ -23,9 +24,11 @@ public class ButtonPanel extends JPanel {
         super();
         this.setInitialOpts();
         this.createCallTrucoButton();
+        this.createCallTruco9Button();
         this.createFoldButton();
 
         this.add( this.callTrucoButton );
+        this.add( this.callTruco9Button );
         this.add( this.foldButton );
     }
 
@@ -39,6 +42,9 @@ public class ButtonPanel extends JPanel {
      */
     private void createCallTrucoButton() {
         this.callTrucoButton = new CallTrucoButton();
+    }
+    private void createCallTruco9Button() {
+        this.callTruco9Button = new CallTruco9Button();
     }
 
     /**
@@ -57,4 +63,5 @@ public class ButtonPanel extends JPanel {
     }
 
     public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
+    public CallTrucoButton getCallTruco9Button() { return this.callTruco9Button; }
 }

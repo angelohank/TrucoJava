@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CallTrucoButton extends JButton {
+public class CallTruco9Button extends JButton {
 
     private boolean pressed = false;
 
@@ -12,8 +12,8 @@ public class CallTrucoButton extends JButton {
         this.pressed = pressed;
     }
     public boolean isPressed() { return this.pressed; }
-    CallTrucoButton() {
-        this.setText("Truco");
+    CallTruco9Button() {
+        this.setText("Trucar 9");
 
         this.addActionListener(new ActionListener() {
             @Override
