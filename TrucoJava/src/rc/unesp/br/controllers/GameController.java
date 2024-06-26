@@ -97,11 +97,20 @@ public class GameController {
                 player.setHand(hand);
             }
 
+
             // TODO: check this
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
 
             Point currentPoint =  startNewPoint( this.players, this.view );
+
+            for( Card card : players.get(1).getHand().getCards() ) {
+                if (card.isManilha()) {
+                    currentPoint.setTrucado(true);
+                    this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
+                }
+            }
+
             checkEndedGame( pointWinner, currentPoint );
 
         }

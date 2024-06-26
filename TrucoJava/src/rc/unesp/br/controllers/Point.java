@@ -21,6 +21,9 @@ public class Point {
     private Player dealer;
     private Player winner;
     private PointValue pointValue;
+    private boolean trucado = false;
+
+    public void setTrucado( boolean trucado ) {this.trucado = trucado;}
 
     /**
      * Constructor of the class
@@ -58,7 +61,7 @@ public class Point {
                     break;
                 }
 
-                boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed();
+                boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed() || this.trucado;
                 if ( jogoTrucado ) {
                     this.view.gamePanel.scorePanel.setRoundValue(3);
                     this.setPointValue( PointValue.THREE );
