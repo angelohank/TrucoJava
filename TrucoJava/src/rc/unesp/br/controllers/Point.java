@@ -40,6 +40,7 @@ public class Point {
         while (!this.isEnded()) {
             Round previousRound = null;
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
+            this.view.gamePanel.buttonPanel.getFoldTrucoButton().setEnabled(true);
             ListIterator<Round> it = this.rounds.listIterator();
 
             // TODO: add logic to treat tie cases and others
@@ -51,6 +52,12 @@ public class Point {
                    is not the first one.
                  */
 
+                if(this.view.gamePanel.buttonPanel.getFoldTrucoButton().isPressed()) {
+                    endPoint(playersInOrder.get(1));
+                    setWinner(playersInOrder.get(1));
+                    break;
+                }
+
                 boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed();
                 if ( jogoTrucado ) {
                     this.view.gamePanel.scorePanel.setRoundValue(3);
@@ -58,10 +65,6 @@ public class Point {
                     /*
                     aqui pode ser chamado um metodo que vai ser responsavel por definir a descricao do botao e o valor da partida
                     */
-                }
-
-                if(this.view.gamePanel.buttonPanel.getFoldTrucoButton().isPressed()) {
-                    endPoint(playersInOrder.get(0));
                 }
 
                 if (it.nextIndex() != 0) {

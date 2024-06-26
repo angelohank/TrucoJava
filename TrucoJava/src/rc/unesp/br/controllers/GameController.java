@@ -78,6 +78,7 @@ public class GameController {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
             turnedCard = this.deck.drawRandomCard();
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setPressed(false);
+            this.view.gamePanel.buttonPanel.getFoldTrucoButton().setPressed(false);
             this.view.gamePanel.scorePanel.setRoundValue(1);
 
             this.view.setTurnedCardOnMiddlePanel(turnedCard);
