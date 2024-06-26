@@ -55,6 +55,13 @@ public class Point {
                 if ( jogoTrucado ) {
                     this.view.gamePanel.scorePanel.setRoundValue(3);
                     this.setPointValue( PointValue.THREE );
+                    /*
+                    aqui pode ser chamado um metodo que vai ser responsavel por definir a descricao do botao e o valor da partida
+                    */
+                }
+
+                if(this.view.gamePanel.buttonPanel.getFoldTrucoButton().isPressed()) {
+                    endPoint(playersInOrder.get(0));
                 }
 
                 if (it.nextIndex() != 0) {
