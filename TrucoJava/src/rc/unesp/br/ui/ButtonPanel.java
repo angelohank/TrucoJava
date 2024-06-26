@@ -13,7 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class ButtonPanel extends JPanel {
     private CallTrucoButton callTrucoButton;
-    private JButton foldButton;
+    private FoldTrucoButton foldTrucoButton;
+
     private Color backgroundColor = new Color(32, 120, 85);
 
     /**
@@ -26,7 +27,7 @@ public class ButtonPanel extends JPanel {
         this.createFoldButton();
 
         this.add( this.callTrucoButton );
-        this.add( this.foldButton );
+        this.add( this.foldTrucoButton );
     }
 
     private void setInitialOpts() {
@@ -38,23 +39,14 @@ public class ButtonPanel extends JPanel {
      * Create the call truco button
      */
     private void createCallTrucoButton() {
-        this.callTrucoButton = new CallTrucoButton();
+        this.callTrucoButton = new CallTrucoButton("Truco");
     }
 
-    /**
-     * Create the fold button
-     */
     private void createFoldButton() {
-        this.foldButton = new JButton("Fold");
-        this.setFoldButtonOpts();
+        this.foldTrucoButton = new FoldTrucoButton("Fold");
     }
 
-    /**
-     * Set the fold button layout options
-     */
-    private void setFoldButtonOpts() {
-        // TODO
-    }
+    public FoldTrucoButton getFoldTrucoButton() { return foldTrucoButton; }
 
     public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
 }
