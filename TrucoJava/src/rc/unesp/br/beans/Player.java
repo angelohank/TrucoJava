@@ -2,9 +2,11 @@ package rc.unesp.br.beans;
 
 /**
  * Class to represent a player of the game.
- * @author lucas Pinheiro @lucaspin
- * @author Dalton Lima @daltonbr
- * @author Bruno Vedovetto @bleandro
+ * 
+ * Authors:
+ * Lucas Pinheiro @lucaspin
+ * Dalton Lima @daltonbr
+ * Bruno Vedovetto @bleandro
  */
 public abstract class Player {
     private String name;
@@ -12,6 +14,7 @@ public abstract class Player {
     private Card currentChosenCard;
     private int gameScore = 0;
     private int roundScore = 0;
+    private boolean acceptedTruco = false;
 
     /**
      * Constructor of the class
@@ -38,7 +41,8 @@ public abstract class Player {
     }
 
     /**
-     * Increase the player's game score by one
+     * Increase the player's game score
+     * @param increment {int} the value to increase the game score by
      */
     public void increaseGameScore(int increment) {
         this.gameScore += increment;
@@ -119,21 +123,30 @@ public abstract class Player {
      * Used when a player wants to call truco
      */
     public void callTruco() {
-        // TODO
+        System.out.println(name + " called Truco!");
     }
 
     /**
      * Called when a player accepts a truco call
+     * @return {boolean}
+     */
+    public boolean isAcceptTruco() {
+        return acceptedTruco;
+    }
+
+    /**
+     * Accepts the truco call
      */
     public void acceptTruco() {
-        // TODO
+        this.acceptedTruco = true;
+        System.out.println(name + " accepted Truco!");
     }
 
     /**
      * Called when a player declines a truco call
      */
     public void fold() {
-        // TODO
+        System.out.println(name + " folded!");
     }
 
     /**
