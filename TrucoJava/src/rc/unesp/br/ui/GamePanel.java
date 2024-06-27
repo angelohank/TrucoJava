@@ -1,5 +1,9 @@
 package rc.unesp.br.ui;
 
+import rc.unesp.br.beans.CPUPlayer;
+import rc.unesp.br.beans.HumanPlayer;
+import rc.unesp.br.beans.Player;
+
 import java.awt.*;
 import javax.swing.*;
 

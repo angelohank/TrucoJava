@@ -26,7 +26,7 @@ public class ButtonPanel extends JPanel {
      * Constructor of the class
      * @param player {Player} the player to handle the game logic
      */
-    public ButtonPanel(Player player) {
+    public ButtonPanel() {
         super();
         this.player = player;
         this.setInitialOpts();
@@ -37,7 +37,6 @@ public class ButtonPanel extends JPanel {
 
         this.add( this.callTrucoButton );
         this.add( this.foldTrucoButton );
-
         this.add(this.acceptTrucoButton);
         this.add(this.requestSixButton);
 
@@ -54,15 +53,6 @@ public class ButtonPanel extends JPanel {
     private void createCallTrucoButton() {
 
         this.callTrucoButton = new CallTrucoButton("Truco");
-
-        this.callTrucoButton = new CallTrucoButton();
-        this.callTrucoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.callTruco();
-            }
-        });
-
     }
 
     private void createFoldButton() {
@@ -70,16 +60,6 @@ public class ButtonPanel extends JPanel {
     }
 
     public FoldTrucoButton getFoldTrucoButton() { return foldTrucoButton; }
-
-        this.foldButton = new JButton("Fold");
-        this.setFoldButtonOpts();
-        this.foldButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.fold();
-            }
-        });
-    }
 
     /**
      * Create the accept truco button
@@ -101,12 +81,6 @@ public class ButtonPanel extends JPanel {
     private void createRequestSixButton() {
         this.requestSixButton = new JButton("Request Six");
         this.setRequestSixButtonOpts();
-        this.requestSixButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.requestSix();
-            }
-        });
     }
 
     /**

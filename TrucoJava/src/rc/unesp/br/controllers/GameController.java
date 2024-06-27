@@ -113,9 +113,6 @@ public class GameController {
                 }
             }
 
-            checkEndedGame( pointWinner, currentPoint );
-
-            Point currentPoint = startNewPoint(this.players, this.view);
             checkEndedGame(pointWinner, currentPoint);
         }
 
