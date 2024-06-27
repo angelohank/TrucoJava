@@ -5,14 +5,16 @@ import rc.unesp.br.DAO.IGameWinnerRepository;
 import rc.unesp.br.beans.*;
 import rc.unesp.br.ui.MainView;
 
-import java.nio.channels.Pipe;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Bruno Vedovetto @bleandro
- * @author Lucas Pinheiro @lucaspin
- * @author Dalton Lima @daltonbr
+ * GameController class that manages the game logic.
+ * 
+ * Authors:
+ * Bruno Vedovetto @bleandro
+ * Lucas Pinheiro @lucaspin
+ * Dalton Lima @daltonbr
  */
 public class GameController {
     static final int EARLY_WIN_ROUND_SCORE = 2;
@@ -23,8 +25,8 @@ public class GameController {
     private Player winner;
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
-    private Card turnedCard;  // ('vira' in Portuguese), the card that determine the Trump Cards (manilhas)
-    private Card faceDownCard; // to represent the deck in the table
+    private Card turnedCard;  // 'vira' in Portuguese, the card that determines the Trump Cards (manilhas)
+    private Card faceDownCard; // to represent the deck on the table
 
     /**
      * Initializes the game
@@ -35,8 +37,8 @@ public class GameController {
         CPUPlayer player2 = new CPUPlayer("CPU player");
         this.players.add(player1);
         this.players.add(player2);
-        //TODO: Ckeck this: instantiating any card here, just to avoid null
-        this.faceDownCard = new Card(Rank.Ace, Suit.CLUBS, false);  // this card will be showed at middle panel, as the deck
+        // TODO: Check this: instantiating any card here, just to avoid null
+        this.faceDownCard = new Card(Rank.Ace, Suit.CLUBS, false);  // this card will be shown in the middle panel, as the deck
         this.faceDownCard.setBackCardImageSource();
         this.initGameLoop();
     }
@@ -87,8 +89,8 @@ public class GameController {
             Hand hand = null;
             for (Player player : this.players) {
                 hand = new Hand(this.deck.drawRandomCards(3));
-                //checking for 'Trump Cards' or 'Manilhas' (in Portugese)
-                for(Card card : hand.getCards()) {
+                // checking for 'Trump Cards' or 'Manilhas' (in Portuguese)
+                for (Card card : hand.getCards()) {
                     if (card.getRank().equals(turnedCard.getRank().getNext())) {
                         card.setManilha(true);
                     }
@@ -100,15 +102,48 @@ public class GameController {
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
 
-            Point currentPoint =  startNewPoint( this.players, this.view );
-            checkEndedGame( pointWinner, currentPoint );
-
+            Point currentPoint = startNewPoint(this.players, this.view);
+            checkEndedGame(pointWinner, currentPoint);
         }
 
         IGameWinnerRepository iGameWinnerRepository = new GameWinnerRepository();
         iGameWinnerRepository.insertGameWinner(pointWinner);
     }
-
+    /**
+ * Method to request Six
+ */
+public void requestSix() {
+    System.out.println("Six has been requested!");
+    for (Player player : this.players) {
+        if (player instanceof HumanPlayer) {
+            // Ask the human player if they want to accept Six
+            boolean accepted = ((HumanPlayer) player).askForSix();
+            if (accepted) {
+                System.out.println(player.getName() + " accepted the Six!");
+                // Update the game points
+                this.view.gamePanel.scorePanel.setRoundValue(6);
+            } else {
+                System.out.println(player.getName() + " did not accept the Six!");
+                // Award 3 points to the challenger
+                for (Player otherPlayer : this.players) {
+                    if (otherPlayer != player) {
+                        otherPlayer.setRoundScore(3);
+                        if (otherPlayer.getName().equals("player1")) {
+                            this.view.gamePanel.scorePanel.setPlayer1RoundScore(otherPlayer.getRoundScore());
+                        } else {
+                            this.view.gamePanel.scorePanel.setPlayer2RoundScore(otherPlayer.getRoundScore());
+                        }
+                    }
+                }
+            }
+        } else if (player instanceof CPUPlayer) {
+            // The CPU player always accepts Six
+            System.out.println(player.getName() + " accepted the Six!");
+            // Update the game points
+            this.view.gamePanel.scorePanel.setRoundValue(6);
+        }
+    }
+}
     /**
      * Reset the player's round score before a new point begins
      */
@@ -158,23 +193,45 @@ public class GameController {
         return this.ended;
     }
 
-    public Point startNewPoint( List<Player> player, MainView view ){
-        Point point = new Point( players );
-        point.setView( view );
-        point.initPoint( players );
+    public Point startNewPoint(List<Player> player, MainView view) {
+        Point point = new Point(players);
+        point.setView(view);
+        point.initPoint(players);
 
         return point;
-    };
-    public void checkEndedGame( Player pointWinner, Point currentPoint ) {
+    }
+
+    public void checkEndedGame(Player pointWinner, Point currentPoint) {
         pointWinner = currentPoint.getWinner();
 
-        if( pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE ) {
-            this.setWinner( pointWinner );
-            this.setEnded( true );
+        if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
+            this.setWinner(pointWinner);
+            this.setEnded(true);
         } else {
             this.deck.resetDeck();
             this.resetPlayersRoundScore();
         }
-    };
+    }
 
+    /**
+     * Method to request Truco
+     */
+    public void requestTruco() {
+        System.out.println("Truco has been requested!");
+        acceptTruco();
+    }
+
+    /**
+     * Method to accept Truco
+     */
+    public void acceptTruco() {
+        for (Player player : this.players) {
+            // Simple logic to accept Truco. Here, all players accept Truco automatically.
+            if (player instanceof HumanPlayer) {
+                System.out.println(player.getName() + " accepted the Truco!");
+            } else if (player instanceof CPUPlayer) {
+                System.out.println(player.getName() + " accepted the Truco!");
+            }
+        }
+    }
 }

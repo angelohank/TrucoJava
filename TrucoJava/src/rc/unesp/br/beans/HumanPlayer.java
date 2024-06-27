@@ -40,4 +40,9 @@ public class HumanPlayer extends Player {
         return this.choosingCard;
     }
 
+    public boolean askForSix() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'askForSix'");
+    }
+
 }
