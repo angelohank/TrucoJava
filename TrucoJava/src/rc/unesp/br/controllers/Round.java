@@ -68,6 +68,7 @@ public class Round {
             this.setWinner(winnerPlayer);
             this.setEnded(true);
         }
+        this.view.gamePanel.displayRoundWinner(winner);
         this.view.setLastChosenCardOnMiddlePanel(Card.getFacedDownCard());
         this.waitToSeeCard(100);
     }

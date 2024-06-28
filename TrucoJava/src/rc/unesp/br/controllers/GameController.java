@@ -119,6 +119,8 @@ public class GameController {
             checkEndedGame(pointWinner, currentPoint);
         }
 
+        view.gamePanel.displayGameWinner(winner);
+
         IGameWinnerRepository iGameWinnerRepository = new GameWinnerRepository();
         iGameWinnerRepository.insertGameWinner(pointWinner);
     }
@@ -246,13 +248,5 @@ public void requestSix() {
                 System.out.println(player.getName() + " accepted the Truco!");
             }
         }
-    }
-  
-    public void displayRoundWinner(Player roundWinner) {
-      String message = (roundWinner != null) ? "O ganhador da rodada é: " + roundWinner.getName() : "A rodada terminou em empate!";
-      JOptionPane.showMessageDialog(this, message, "Ganhador da Rodada", JOptionPane.INFORMATION_MESSAGE);
-    }
-      public void displayGameWinner(Player gameWinner) {
-      JOptionPane.showMessageDialog(this, "O ganhador da partida é: " + gameWinner.getName(), "Ganhador da Partida", JOptionPane.INFORMATION_MESSAGE);
     }
 }
