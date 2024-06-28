@@ -55,7 +55,6 @@ public class GamePanel extends JPanel {
         // Set the layout options
         this.constraints.gridx = 4;
         this.constraints.gridy = 2;
-        this.constraints.anchor = GridBagConstraints.SOUTHEAST;
 
         this.add(this.buttonPanel, this.constraints);
     }

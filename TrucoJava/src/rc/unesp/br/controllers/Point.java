@@ -43,6 +43,7 @@ public class Point {
         while (!this.isEnded()) {
             Round previousRound = null;
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
+            this.view.gamePanel.buttonPanel.getCallTruco9Button().setEnabled(true);
             this.view.gamePanel.buttonPanel.getFoldTrucoButton().setEnabled(true);
             ListIterator<Round> it = this.rounds.listIterator();
 
@@ -68,6 +69,12 @@ public class Point {
                     /*
                     aqui pode ser chamado um metodo que vai ser responsavel por definir a descricao do botao e o valor da partida
                     */
+                }
+
+                boolean pedirTruco9 = this.view.gamePanel.buttonPanel.getCallTruco9Button().isPressed();
+                if ( pedirTruco9 ) {
+                    this.view.gamePanel.scorePanel.setRoundValue(9);
+                    this.setPointValue( PointValue.NINE);
                 }
 
                 if (it.nextIndex() != 0) {
