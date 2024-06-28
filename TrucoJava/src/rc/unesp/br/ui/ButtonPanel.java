@@ -23,10 +23,6 @@ public class ButtonPanel extends JPanel {
     private Color backgroundColor = new Color(32, 120, 85);
     private Player player;
 
-    /**
-     * Constructor of the class
-     * @param player {Player} the player to handle the game logic
-     */
     public ButtonPanel() {
         super();
         this.player = player;
@@ -90,8 +86,8 @@ public class ButtonPanel extends JPanel {
     }
 
     public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
-    public CallTrucoButton getCallTruco9Button() { return this.callTruco9Button; }
-}
+    public CallTruco9Button getCallTruco9Button() { return this.callTruco9Button; }
+
     /**
      * Set the accept truco button layout options
      */
@@ -111,8 +107,5 @@ public class ButtonPanel extends JPanel {
         this.requestSixButton.setBackground(new Color(30, 144, 255));
         this.requestSixButton.setForeground(Color.WHITE);
     }
-
-    public CallTrucoButton getCallTrucoButton() {
-        return this.callTrucoButton;
-    }
 }
+

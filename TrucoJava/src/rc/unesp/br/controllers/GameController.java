@@ -78,6 +78,7 @@ public class GameController {
 
         while (!this.isEnded()) {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
+
             turnedCard = this.deck.drawRandomCard();
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setPressed(false);
             this.view.gamePanel.buttonPanel.getFoldTrucoButton().setPressed(false);
@@ -112,7 +113,7 @@ public class GameController {
                     this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
                 }
             }
-
+            pointWinner = currentPoint.getWinner();
             checkEndedGame(pointWinner, currentPoint);
         }
 
@@ -245,38 +246,4 @@ public void requestSix() {
         }
     }
 }
-
-
-
-
-private void initGameLoop() {
-    Player pointWinner = null;
-
-    while (!this.isEnded()) {
-
-        pointWinner = point.getWinner();
-        if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
-            this.setWinner(pointWinner);
-            this.setEnded(true);
-        } else {
-            this.deck.resetDeck();
-            for (Player player : this.players) {
-                player.resetRoundScore();
-
-                if (player.getName().equals("player1")) {
-                    this.view.gamePanel.scorePanel.setPlayer1RoundScore(player.getRoundScore());
-                } else {
-                    this.view.gamePanel.scorePanel.setPlayer2RoundScore(player.getRoundScore());
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-
-
 
