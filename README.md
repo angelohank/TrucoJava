@@ -9,9 +9,9 @@ Dalton Lima @daltonbr
 Lucas Pinheiro @lucaspin  
 
 ## Mainteners 
-Ângelo Hank
-Gustavo Campos
-Gustavo Santini
+Ângelo Hank <br>
+Gustavo Campos <br>
+Gustavo Santini <br>
 Jonathan de Andrade
 
 
