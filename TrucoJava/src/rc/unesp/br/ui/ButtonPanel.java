@@ -15,6 +15,7 @@ import rc.unesp.br.beans.Player;
  */
 public class ButtonPanel extends JPanel {
     private CallTrucoButton callTrucoButton;
+    private CallTruco9Button callTruco9Button;
     private FoldTrucoButton foldTrucoButton;
     private JButton acceptTrucoButton;
     private JButton requestSixButton;
@@ -31,15 +32,17 @@ public class ButtonPanel extends JPanel {
         this.player = player;
         this.setInitialOpts();
         this.createCallTrucoButton();
+        this.createCallTruco9Button();
         this.createFoldButton();
         this.createAcceptTrucoButton();
         this.createRequestSixButton();
 
         this.add( this.callTrucoButton );
+        this.add( this.callTruco9Button );
+
         this.add( this.foldTrucoButton );
         this.add(this.acceptTrucoButton);
         this.add(this.requestSixButton);
-
     }
 
     private void setInitialOpts() {
@@ -53,6 +56,9 @@ public class ButtonPanel extends JPanel {
     private void createCallTrucoButton() {
 
         this.callTrucoButton = new CallTrucoButton("Truco");
+    }
+    private void createCallTruco9Button() {
+        this.callTruco9Button = new CallTruco9Button();
     }
 
     private void createFoldButton() {
@@ -83,6 +89,9 @@ public class ButtonPanel extends JPanel {
         this.setRequestSixButtonOpts();
     }
 
+    public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
+    public CallTrucoButton getCallTruco9Button() { return this.callTruco9Button; }
+}
     /**
      * Set the accept truco button layout options
      */
