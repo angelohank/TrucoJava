@@ -25,7 +25,6 @@ public class ButtonPanel extends JPanel {
 
     public ButtonPanel() {
         super();
-        this.player = player;
         this.setInitialOpts();
         this.createCallTrucoButton();
         this.createCallTruco9Button();
@@ -35,14 +34,13 @@ public class ButtonPanel extends JPanel {
 
         this.add( this.callTrucoButton );
         this.add( this.callTruco9Button );
-
         this.add( this.foldTrucoButton );
         this.add(this.acceptTrucoButton);
         this.add(this.requestSixButton);
     }
 
     private void setInitialOpts() {
-        this.setPreferredSize(new Dimension(GamePanel.DEFAULT_PANEL_WIDTH, GamePanel.DEFAULT_PANEL_HEIGHT));
+        this.setPreferredSize(new Dimension(200, 400));
         this.setBackground(backgroundColor);
     }
 
@@ -50,11 +48,10 @@ public class ButtonPanel extends JPanel {
      * Create the call truco button
      */
     private void createCallTrucoButton() {
-
         this.callTrucoButton = new CallTrucoButton("Truco");
     }
     private void createCallTruco9Button() {
-        this.callTruco9Button = new CallTruco9Button();
+        this.callTruco9Button = new CallTruco9Button("9");
     }
 
     private void createFoldButton() {
@@ -86,14 +83,17 @@ public class ButtonPanel extends JPanel {
     }
 
     public CallTrucoButton getCallTrucoButton() { return this.callTrucoButton; }
-    public CallTruco9Button getCallTruco9Button() { return this.callTruco9Button; }
+    public CallTruco9Button getCallTruco9Button() {
+        return this.callTruco9Button;
+
+    }
 
     /**
      * Set the accept truco button layout options
      */
     private void setAcceptTrucoButtonOpts() {
         // Set layout options for the accept truco button
-        this.acceptTrucoButton.setPreferredSize(new Dimension(120, 40));
+        this.acceptTrucoButton.setPreferredSize(new Dimension(100, 20));
         this.acceptTrucoButton.setBackground(new Color(34, 139, 34));
         this.acceptTrucoButton.setForeground(Color.WHITE);
     }
@@ -103,7 +103,7 @@ public class ButtonPanel extends JPanel {
      */
     private void setRequestSixButtonOpts() {
         // Set layout options for the request six button
-        this.requestSixButton.setPreferredSize(new Dimension(120, 40));
+        this.requestSixButton.setPreferredSize(new Dimension(100, 20));
         this.requestSixButton.setBackground(new Color(30, 144, 255));
         this.requestSixButton.setForeground(Color.WHITE);
     }

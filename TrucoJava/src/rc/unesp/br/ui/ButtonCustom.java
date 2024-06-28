@@ -16,7 +16,7 @@ public class ButtonCustom extends JButton {
     ButtonCustom( String description ) {
         this.setText(description);
 
-        this.setPreferredSize(new Dimension(120, 40));
+        this.setPreferredSize(new Dimension(100, 20));
         this.setBackground(new Color(35, 200, 34));
         this.setForeground(Color.WHITE);
 
