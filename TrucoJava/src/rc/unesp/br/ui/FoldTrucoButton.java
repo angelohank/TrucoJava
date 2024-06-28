@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CallTrucoButton extends ButtonCustom {
-    CallTrucoButton( String description) {
+public class FoldTrucoButton extends ButtonCustom {
+    FoldTrucoButton( String description ) {
         super(description);
     }
 }

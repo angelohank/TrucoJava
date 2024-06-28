@@ -21,6 +21,9 @@ public class Point {
     private Player dealer;
     private Player winner;
     private PointValue pointValue;
+    private boolean trucado = false;
+
+    public void setTrucado( boolean trucado ) {this.trucado = trucado;}
 
     /**
      * Constructor of the class
@@ -41,6 +44,7 @@ public class Point {
             Round previousRound = null;
             this.view.gamePanel.buttonPanel.getCallTrucoButton().setEnabled(true);
             this.view.gamePanel.buttonPanel.getCallTruco9Button().setEnabled(true);
+            this.view.gamePanel.buttonPanel.getFoldTrucoButton().setEnabled(true);
             ListIterator<Round> it = this.rounds.listIterator();
 
             // TODO: add logic to treat tie cases and others
@@ -52,10 +56,19 @@ public class Point {
                    is not the first one.
                  */
 
-                boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed();
+                if(this.view.gamePanel.buttonPanel.getFoldTrucoButton().isPressed()) {
+                    endPoint(playersInOrder.get(1));
+                    setWinner(playersInOrder.get(1));
+                    break;
+                }
+
+                boolean jogoTrucado = this.view.gamePanel.buttonPanel.getCallTrucoButton().isPressed() || this.trucado;
                 if ( jogoTrucado ) {
                     this.view.gamePanel.scorePanel.setRoundValue(3);
                     this.setPointValue( PointValue.THREE );
+                    /*
+                    aqui pode ser chamado um metodo que vai ser responsavel por definir a descricao do botao e o valor da partida
+                    */
                 }
 
                 boolean pedirTruco9 = this.view.gamePanel.buttonPanel.getCallTruco9Button().isPressed();
