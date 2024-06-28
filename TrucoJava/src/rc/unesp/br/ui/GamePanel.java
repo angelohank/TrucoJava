@@ -31,6 +31,7 @@ public class GamePanel extends JPanel {
      */
     public GamePanel() {
         this.setInitialOpts();
+
         this.createTopPlayerPanel();
         this.createBottomPlayerPanel();
         this.createMiddlePanel();

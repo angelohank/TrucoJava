@@ -102,7 +102,6 @@ public class GameController {
                 player.setHand(hand);
             }
 
-
             // TODO: check this
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());

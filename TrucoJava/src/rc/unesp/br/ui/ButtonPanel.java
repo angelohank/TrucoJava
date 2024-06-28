@@ -40,7 +40,7 @@ public class ButtonPanel extends JPanel {
     }
 
     private void setInitialOpts() {
-        this.setPreferredSize(new Dimension(200, 400));
+        this.setPreferredSize(new Dimension(200, 150));
         this.setBackground(backgroundColor);
     }
 
