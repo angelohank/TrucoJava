@@ -12,8 +12,8 @@ import java.util.List;
  * @author Bruno Vedovetto @bleandro
  */
 public class MainView extends JFrame {
-    static final int MINIMUM_HEIGHT = 550;
-    static final int MINIMUM_WIDTH = 680;
+    static final int MINIMUM_HEIGHT = 650;
+    static final int MINIMUM_WIDTH = 800;
 
     public GamePanel gamePanel;
 
