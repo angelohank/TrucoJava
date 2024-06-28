@@ -245,3 +245,38 @@ public void requestSix() {
         }
     }
 }
+
+
+
+
+private void initGameLoop() {
+    Player pointWinner = null;
+
+    while (!this.isEnded()) {
+
+        pointWinner = point.getWinner();
+        if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
+            this.setWinner(pointWinner);
+            this.setEnded(true);
+        } else {
+            this.deck.resetDeck();
+            for (Player player : this.players) {
+                player.resetRoundScore();
+
+                if (player.getName().equals("player1")) {
+                    this.view.gamePanel.scorePanel.setPlayer1RoundScore(player.getRoundScore());
+                } else {
+                    this.view.gamePanel.scorePanel.setPlayer2RoundScore(player.getRoundScore());
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
