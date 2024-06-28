@@ -8,6 +8,8 @@ import rc.unesp.br.ui.MainView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 /**
  * GameController class that manages the game logic.
  * 
@@ -275,6 +277,18 @@ private void initGameLoop() {
 
 
 
+public void displayRoundWinner(Player roundWinner) {
+	String message = (roundWinner != null) ? "O ganhador da rodada é: " + roundWinner.getName() : "A rodada terminou em empate!";
+	JOptionPane.showMessageDialog(this, message, "Ganhador da Rodada", JOptionPane.INFORMATION_MESSAGE);
+}
+public void displayGameWinner(Player gameWinner) {
+	JOptionPane.showMessageDialog(this, "O ganhador da partida é: " + gameWinner.getName(), "Ganhador da Partida", JOptionPane.INFORMATION_MESSAGE);
+}
+
+
+ this.view.gamePanel.displayRoundWinner(winnerPlayer); } this.view.setLastChosenCardOnMiddlePanel(Card.getFacedDownCard()); this.waitToSeeCard(100);
+
+ 
 
 
 
